@@ -11,6 +11,8 @@ import java.time.Duration;
 public class BaseTest {
 
     WebDriver driver;
+    String errorTextWhenPswIncorrect = "Epic sadface: Username and password do not match any user in this service";
+    String errorTextWhenPswIsEmpty = "Epic sadface: Password is required";
 
     @BeforeMethod
     public void setUp() {
