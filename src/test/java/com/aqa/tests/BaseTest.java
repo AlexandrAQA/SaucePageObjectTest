@@ -15,6 +15,7 @@ public class BaseTest {
     LoginPage loginPage;
     String errorTextWhenPswIncorrect = "Epic sadface: Username and password do not match any user in this service";
     String errorTextWhenPswIsEmpty = "Epic sadface: Password is required";
+    String errorTextWhenLoginIsEmpty = "Epic sadface: Username is required";
 
     @BeforeMethod
     public void setUp() {

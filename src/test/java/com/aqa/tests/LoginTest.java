@@ -30,4 +30,11 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPage.getErrorFromThePage(),
                 errorTextWhenPswIsEmpty, "the error message is incorrect");
     }
+    @Test
+    public void loginShouldBeRequiredForLogin() {
+        loginPage.open();
+        loginPage.login("", "");
+        Assert.assertEquals(loginPage.getErrorFromThePage(),
+                errorTextWhenLoginIsEmpty, "the error message is incorrect");
+    }
 }
