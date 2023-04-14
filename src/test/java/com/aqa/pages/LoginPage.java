@@ -18,10 +18,10 @@ public class LoginPage {
     }
 
 
-    public void login(){
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).submit();
+    public void login(String user, String password){
+        driver.findElement(userNameInput).sendKeys(user);
+        driver.findElement(passwordInput).sendKeys(password);
+        driver.findElement(loginButton).submit();
 
     }
 }
