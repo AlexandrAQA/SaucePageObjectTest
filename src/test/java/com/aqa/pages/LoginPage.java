@@ -3,9 +3,9 @@ package com.aqa.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
 
-    WebDriver driver;
+
 
    private final By USER_NAME_INPUT = By.id("user-name");
    private final By PASSWORD_INPUT = By.id("password");
@@ -13,8 +13,9 @@ public class LoginPage {
     private final By ERROR = By.cssSelector("h3[data-test='error']");
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
+
 
     public void open() {
         driver.get("https://www.saucedemo.com/");

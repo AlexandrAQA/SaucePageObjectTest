@@ -12,7 +12,7 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         WebElement titleProducts = driver.findElement(By.cssSelector(".title"));
-        Assert.assertTrue(titleProducts.isDisplayed(), "User was not logged in");
+        Assert.assertTrue(productsPage.getTitle().isDisplayed(), "User was not logged in");
     }
 
     @Test

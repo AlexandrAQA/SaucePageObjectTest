@@ -4,13 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ProductsPage {
+public class ProductsPage extends BasePage{
     //By - this is all locators type
    private final By TITLE = By.cssSelector(".title");
-   WebDriver driver;
 
-    public ProductsPage( WebDriver driver) {
-        this.driver = driver;
+    public ProductsPage(WebDriver driver) {
+        super(driver);
     }
 
     public WebElement getTitle(){
