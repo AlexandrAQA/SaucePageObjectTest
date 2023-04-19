@@ -2,6 +2,7 @@ package com.aqa.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
 
 public class LoginPage extends BasePage{
 
@@ -18,7 +19,7 @@ public class LoginPage extends BasePage{
 
 
     public void open() {
-        driver.get("https://www.saucedemo.com/");
+        driver.get(BASE_URL);
     }
 
     public void login(String user, String password){
@@ -29,5 +30,11 @@ public class LoginPage extends BasePage{
 
     public String getErrorFromThePage() {
        return driver.findElement(ERROR).getText();
+    }
+
+    @Test
+    public void loginAsValidUser() {
+        login("standard_user", "secret_sauce");
+
     }
 }
