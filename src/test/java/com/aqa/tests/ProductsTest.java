@@ -9,6 +9,8 @@ public class ProductsTest extends BaseTest{
         loginPage.open();
         loginPage.loginAsValidUser();
         productsPage.open();
+        productsPage.addToCart("Sauce Labs Fleece Jacket");
+        System.out.println("");
 
     }
 }
