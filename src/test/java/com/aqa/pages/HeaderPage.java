@@ -5,13 +5,13 @@ import org.openqa.selenium.WebDriver;
 
 public class HeaderPage extends BasePage{
 
-    private By cartLink = By.xpath("//div[@id='shopping_cart_container']/a");
+    private By CART_LINK = By.xpath("//div[@id='shopping_cart_container']/a");
 
     public HeaderPage(WebDriver driver) {
         super(driver);
     }
 
     public void openCart(){
-        driver.findElement(cartLink).click();
+        driver.findElement(CART_LINK).click();
     }
 }
