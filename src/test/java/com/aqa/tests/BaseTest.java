@@ -1,5 +1,6 @@
 package com.aqa.tests;
 
+import com.aqa.pages.CartPage;
 import com.aqa.pages.HeaderPage;
 import com.aqa.pages.LoginPage;
 import com.aqa.pages.ProductsPage;
@@ -17,6 +18,7 @@ public class BaseTest {
     LoginPage loginPage;
     ProductsPage productsPage;
     HeaderPage headerPage;
+    CartPage cartPage;
 
     String errorTextWhenPswIncorrect = "Epic sadface: Username and password do not match any user in this service";
     String errorTextWhenPswIsEmpty = "Epic sadface: Password is required";
@@ -32,6 +34,7 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         headerPage = new HeaderPage(driver);
+        cartPage = new CartPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
