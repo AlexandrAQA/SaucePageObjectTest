@@ -14,6 +14,6 @@ public class ProductsTest extends BaseTest {
         productsPage.addToCart(firstSauceLabsFleeceJacket);
         productsPage.addToCart(secondSauceLabsBackpack);
         headerPage.openCart();
-        cartPage.removeProductFromCart(firstSauceLabsFleeceJacket);
+        cartPage.removeProductFromCart(secondSauceLabsBackpack);
     }
 }
