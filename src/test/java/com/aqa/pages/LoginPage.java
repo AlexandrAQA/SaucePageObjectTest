@@ -1,35 +1,37 @@
 package com.aqa.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
-
-
-   private final By USER_NAME_INPUT = By.id("user-name");
-   private final By PASSWORD_INPUT = By.id("password");
-   private final By LOGIN_BUTTON = By.id("login-button");
-    private final By ERROR = By.cssSelector("h3[data-test='error']");
+    @FindBy(id = "user-name")
+    private WebElement userNameInput;
+    @FindBy(id = "password")
+    private WebElement passwordInput;
+    @FindBy(id = "login-button")
+    private WebElement loginButton;
+    @FindBy(css = "h3[data-test='error']")
+    private WebElement error;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-
     public void open() {
         driver.get(BASE_URL);
     }
 
-    public void login(String user, String password){
-        driver.findElement(USER_NAME_INPUT).sendKeys(user);
-        driver.findElement(PASSWORD_INPUT).sendKeys(password);
-        driver.findElement(LOGIN_BUTTON).submit();
+    public void login(String user, String password) {
+        userNameInput.sendKeys(user);
+        passwordInput.sendKeys(password);
+        loginButton.submit();
     }
 
     public String getErrorFromThePage() {
-       return driver.findElement(ERROR).getText();
+        return error.getText();
     }
 
     @Test
