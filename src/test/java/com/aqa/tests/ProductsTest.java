@@ -23,5 +23,8 @@ public class ProductsTest extends BaseTest {
 
         Assert.assertEquals(allProductsInCartAfterRemove.size(),
                 1, "There is only 1 product in the cart after removing");
+        Assert.assertEquals(allProductsInCartAfterRemove.get(0).getText(),
+                firstSauceLabsFleeceJacket, "\"Sauce Labs Fleece Jacket\"" +
+                        " is in the cart after removing another one");
     }
 }
