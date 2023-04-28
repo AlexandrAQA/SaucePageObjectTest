@@ -36,7 +36,6 @@ public class LoginPage extends BasePage {
 
     public void open() {
         driver.get(BASE_URL);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-button")));
     }
 
