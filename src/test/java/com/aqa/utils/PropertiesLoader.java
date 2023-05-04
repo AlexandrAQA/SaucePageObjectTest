@@ -16,13 +16,11 @@ public class PropertiesLoader {
         return properties;
     }
 
-    public static Properties loadProperties(){
+    public static Properties loadProperties() {
         Properties properties = loadProperties("config.properties");
         String user = properties.getProperty("user");
         Properties userProperties = loadProperties(user + ".properties");
         properties.putAll(userProperties);
         return properties;
     }
-
-
 }
