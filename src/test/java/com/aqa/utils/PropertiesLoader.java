@@ -1,13 +1,28 @@
 package com.aqa.utils;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesLoader {
 
-    public static Properties loadProperties(){
+    public static Properties loadProperties(String fileName) {
         Properties properties = new Properties();
-
-
+        try (InputStream inputStream = PropertiesLoader.class.getClassLoader().getResourceAsStream(fileName)) {
+            properties.load(inputStream);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
         return properties;
     }
+
+    public static Properties loadProperties(){
+        Properties properties = loadProperties("config.properties");
+        String user = properties.getProperty("user");
+        Properties userProperties = loadProperties(user + ".properties");
+        properties.putAll(userProperties);
+        return properties;
+    }
+
+
 }
