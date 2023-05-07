@@ -1,5 +1,6 @@
 package com.aqa.pages;
 
+import com.aqa.utils.PropertiesLoader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.Properties;
 
 public class LoginPage extends BasePage {
 
@@ -49,9 +51,23 @@ public class LoginPage extends BasePage {
         return error.getText();
     }
 
-    @Test
+
     public void loginAsValidUser() {
         login("standard_user", "secret_sauce");
 
+    }
+
+    public void loginAsStandardUser() {
+        Properties properties = PropertiesLoader.loadProperties();
+        userNameInput.sendKeys(properties.getProperty("username"));
+        passwordInput.sendKeys(properties.getProperty("password"));
+        loginButton.submit();
+    }
+
+    public void loginAsDefaultUser() {
+        Properties properties = PropertiesLoader.loadProperties();
+        userNameInput.sendKeys(properties.getProperty("username"));
+        passwordInput.sendKeys(properties.getProperty("password"));
+        loginButton.submit();
     }
 }
