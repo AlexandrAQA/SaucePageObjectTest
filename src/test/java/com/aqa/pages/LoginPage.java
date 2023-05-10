@@ -1,31 +1,26 @@
 package com.aqa.pages;
 
-import com.aqa.utils.PropertiesLoader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Properties;
-
 public class LoginPage extends BasePage {
 
+    private static final String LOGIN_BUTTON_ID = "login-button";
+
     @FindBy(id = "user-name")
-    @CacheLookup
     private WebElement userNameInput;
 
     @FindBy(id = "password")
-    @CacheLookup
     private WebElement passwordInput;
 
-    @FindBy(id = "login-button")
-    @CacheLookup
+    @FindBy(id = LOGIN_BUTTON_ID)
     private WebElement loginButton;
 
-    @FindBy(css = "h3[data-test='error']")
+    @FindBy(css = "[data-test=error]")
     private WebElement error;
 
     public LoginPage(WebDriver driver) {
@@ -33,38 +28,32 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    public By getLoginButtonLocator() {
+        return By.id(LOGIN_BUTTON_ID);
+    }
+
     public void open() {
-        driver.get(BASE_URL);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-button")));
+        driver.get(baseUrl);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(getLoginButtonLocator()));
     }
 
-    public void login(String user, String password) {
-        userNameInput.sendKeys(user);
+    public void fillInUserName(String userName) {
+        userNameInput.sendKeys(userName);
+    }
+
+    public void fillInPassword(String password) {
         passwordInput.sendKeys(password);
+    }
+
+    public void submitForm() {
         loginButton.submit();
     }
 
-    public String getErrorFromThePage() {
+    public boolean isLoginButtonDisplayed() {
+        return loginButton.isDisplayed();
+    }
+
+    public String getError() {
         return error.getText();
-    }
-
-
-    public void loginAsValidUser() {
-        login("standard_user", "secret_sauce");
-
-    }
-
-    public void loginAsStandardUser() {
-        Properties properties = PropertiesLoader.loadProperties();
-        userNameInput.sendKeys(properties.getProperty("username"));
-        passwordInput.sendKeys(properties.getProperty("password"));
-        loginButton.submit();
-    }
-
-    public void loginAsDefaultUser() {
-        Properties properties = PropertiesLoader.loadProperties();
-        userNameInput.sendKeys(properties.getProperty("username"));
-        passwordInput.sendKeys(properties.getProperty("password"));
-        loginButton.submit();
     }
 }
