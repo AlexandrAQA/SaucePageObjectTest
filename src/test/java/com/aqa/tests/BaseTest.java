@@ -1,12 +1,11 @@
 package com.aqa.tests;
 
-import com.aqa.pages.CartPage;
-import com.aqa.pages.HeaderPage;
-import com.aqa.pages.LoginPage;
-import com.aqa.pages.ProductsPage;
+import com.aqa.pages.*;
+import com.aqa.steps.LoginSteps;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -15,31 +14,39 @@ import java.time.Duration;
 public class BaseTest {
 
     WebDriver driver;
+    WebDriverWait wait;
     LoginPage loginPage;
     ProductsPage productsPage;
     HeaderPage headerPage;
     CartPage cartPage;
-
-    String errorTextWhenPswIncorrect = "Epic sadface: Username and password do not match any user in this service";
-    String errorTextWhenPswIsEmpty = "Epic sadface: Password is required";
-    String errorTextWhenLoginIsEmpty = "Epic sadface: Username is required";
+    CheckoutPage checkoutPage;
+    CheckoutOverviewPage checkoutOverviewPage;
+    LoginSteps loginSteps;
 
     @BeforeMethod
     public void setUp() {
+        //Initialize web driver and create driver instance
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //Set up driver settings
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        //Pages
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         headerPage = new HeaderPage(driver);
         cartPage = new CartPage(driver);
+        //Steps
+        loginSteps = new LoginSteps(driver);
+        checkoutPage = new CheckoutPage(driver);
+        checkoutOverviewPage = new CheckoutOverviewPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        if (driver != null)
+        if (driver != null) {
             driver.quit();
+        }
     }
 }
