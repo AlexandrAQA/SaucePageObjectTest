@@ -8,7 +8,7 @@ import static org.testng.Assert.assertTrue;
 
 public class LogoutTest extends BaseTest {
 
-    @Test
+    @Test(description = "Validation of LogOut menu item in burger menu on products page")
     public void logoutInBurgerMenuShouldLogoutUser() {
         loginSteps.loginAsDefaultUser();
         headerPage.openBurgerMenu();
