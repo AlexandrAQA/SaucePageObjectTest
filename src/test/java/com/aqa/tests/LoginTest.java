@@ -16,7 +16,8 @@ public class LoginTest extends BaseTest {
         assertTrue(productsPage.getTitle().isDisplayed(), "User was not logged in");
     }
 
-    @Test
+    // the parameters not for final prod's code
+    @Test(invocationCount = 2, invocationTimeOut = 10000, successPercentage = 50)
     public void passwordShouldBeRequiredForLogin() {
         loginSteps.login("standard_user", "");
         String expected = "Epic sadface: Password is required";
