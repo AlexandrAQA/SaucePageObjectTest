@@ -24,7 +24,7 @@ public class LoginTest extends BaseTest {
         assertEquals(loginPage.getError(), expected, "The error is incorrect");
     }
 
-    @Test
+    @Test (invocationCount = 3, threadPoolSize = 3)
     public void userNameShouldBeRequiredForLogin() {
         loginSteps.login("", "12345");
         String expected = "Epic sadface: Username is required";
