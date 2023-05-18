@@ -10,42 +10,42 @@ import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(priority = 1)
     public void userShouldLoginWithValidCredentials() {
         loginSteps.loginAsStandardUser();
         assertTrue(productsPage.getTitle().isDisplayed(), "User was not logged in");
     }
 
     // the parameters not for final prod's code
-    @Test(invocationCount = 2, invocationTimeOut = 10000, successPercentage = 50)
+    @Test(priority = 2)
     public void passwordShouldBeRequiredForLogin() {
         loginSteps.login("standard_user", "");
         String expected = "Epic sadface: Password is required";
         assertEquals(loginPage.getError(), expected, "The error is incorrect");
     }
 
-    @Test (invocationCount = 3, threadPoolSize = 3)
+    @Test(priority = 3)
     public void userNameShouldBeRequiredForLogin() {
         loginSteps.login("", "12345");
         String expected = "Epic sadface: Username is required";
         assertEquals(loginPage.getError(), expected, "The error is incorrect");
     }
 
-    @Test
+    @Test(priority = 4)
     public void userShouldNotBeLoggedInBeWithInvalidPassword() {
         loginSteps.login("standard_user", "12345");
         String expected = "Epic sadface: Username and password do not match any user in this service";
         assertEquals(loginPage.getError(), expected, "The error is incorrect");
     }
 
-    @Test
+    @Test(priority = 5)
     public void userShouldNotBeLoggedInBeWithInvalidUserName() {
         loginSteps.login("standard_user1", "secret_sauce");
         String expected = "Epic sadface: Username and password do not match any user in this service";
         assertEquals(loginPage.getError(), expected, "The error is incorrect");
     }
 
-    @Test
+    @Test(priority = 6)
     public void lockedOutUserShouldNotBeLoggedIn() {
         Properties properties = PropertiesLoader.loadProperties("locked_out_user.properties");
         loginSteps.login(properties.getProperty("username"), properties.getProperty("password"));
