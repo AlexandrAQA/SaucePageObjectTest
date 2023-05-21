@@ -9,7 +9,7 @@ public class CheckoutPage extends BasePage{
     @FindBy(css = ".title")
     private WebElement title;
 
-    @FindBy(xpath = "//span[@class='title' and text()='CHECKOUT: YOUR INFORMATION']")
+    @FindBy(xpath = "//span[@class='title' and text()='Checkout: Your Information']")
     private WebElement checkoutTitle;
 
     @FindBy(id = "first-name")

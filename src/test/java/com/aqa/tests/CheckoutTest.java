@@ -14,7 +14,7 @@ public class CheckoutTest extends BaseTest{
         headerPage.openCart();
         cartPage.checkout();
         checkoutPage.fillInCheckoutInfo("First Name", "Last Name", "Postal Code");
-        assertEquals(checkoutOverviewPage.getTitle().getText(), "CHECKOUT: OVERVIEW",
+        assertEquals(checkoutOverviewPage.getTitle().getText(), "Checkout: Overview",
                 "Checkout overview is not displayed after user clicks on \"Finish\" button");
     }
 }
