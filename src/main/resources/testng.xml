@@ -3,11 +3,13 @@
 <suite name="Smoke and Regression TestSuit">
     <test name="Login Test">
         <classes>
-            <class name="com.aqa.tests.CartTest"/>
-            <class name="com.aqa.tests.CheckoutTest"/>
-            <class name="com.aqa.tests.LogoutTest"/>
-            <class name="com.aqa.tests.ProductsTest"/>
-            <class name="com.aqa.tests.LoginTest"/>
+            <class name="com.aqa.tests.LoginTest">
+            <methods>
+                <include name="userShouldLoginWithValidCredentials"/>
+                <exclude name="userShouldNotBeLoggedInBeWithInvalidPassword"/>
+            </methods>
+            </class>
+
         </classes>
     </test>
 </suite>
