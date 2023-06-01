@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Critical TestSuit in Chrome and Firefox" parallel="tests" thread-count="2">
+    <test name="Chrome">
+        <classes>
+            <class name="com.aqa.tests.LoginCrTest">
+            <parameter name="username" value="standard_user"/>
+            <parameter name="password" value="secret_sauce"/>
+                <methods>
+                    <include name="userShouldLoginWithValidCredentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
