@@ -35,7 +35,7 @@ public class BaseTest {
             //created ChromeOptions
             ChromeOptions options = new ChromeOptions();
             //without launching web browser!!!
-            //options.addArguments("--headless=new");
+            options.addArguments("--headless=new");
 
             driver = new ChromeDriver(options);
             wait = new WebDriverWait(driver, Duration.ofSeconds(10));
