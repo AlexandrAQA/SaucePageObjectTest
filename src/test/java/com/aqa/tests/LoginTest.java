@@ -2,9 +2,7 @@ package com.aqa.tests;
 
 import com.aqa.utils.PropertiesLoader;
 import org.testng.annotations.Test;
-
 import java.util.Properties;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
