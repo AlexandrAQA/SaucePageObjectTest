@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class TestListener implements ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {
-        System.out.println(String.format("====================================== STARTING TEST %s ========================================", iTestResult.getName()));
+        System.out.println(String.format("==================================== STARTING TEST %s ========================================", iTestResult.getName()));
     }
 
     @Override
