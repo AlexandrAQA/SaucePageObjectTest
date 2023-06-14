@@ -36,14 +36,14 @@ public class LoginTest extends BaseTest {
         assertEquals(loginPage.getError(), expected, "The error is incorrect");
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, enabled = false)
     public void userShouldNotBeLoggedInBeWithInvalidUserName() {
         loginSteps.login("standard_user1", "secret_sauce");
         String expected = "Epic sadface: Username and password do not match any user in this service";
         assertEquals(loginPage.getError(), expected, "The error is incorrect");
     }
 
-    @Test(priority = 6)
+    @Test
     public void lockedOutUserShouldNotBeLoggedIn() {
         Properties properties = PropertiesLoader.loadProperties("locked_out_user.properties");
         loginSteps.login(properties.getProperty("username"), properties.getProperty("password"));

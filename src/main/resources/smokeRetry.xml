@@ -3,6 +3,7 @@
 <suite name="TestNG retry.Listener Example">
     <listeners>
         <listener class-name="com.aqa.utils.annotationTransformer.AnnotationTransformer"/>
+        <listener class-name="com.aqa.utils.listener.TestListener"/>
     </listeners>
 
     <test name="TestNG Sample Test">

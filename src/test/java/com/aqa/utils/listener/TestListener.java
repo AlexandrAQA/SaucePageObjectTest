@@ -29,21 +29,6 @@ public class TestListener implements ITestListener {
         System.out.println(String.format("======================================== SKIPPING TEST %s ========================================", iTestResult.getName()));
     }
 
-    @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
-    }
-
-    @Override
-    public void onStart(ITestContext iTestContext) {
-
-    }
-
-    @Override
-    public void onFinish(ITestContext iTestContext) {
-
-    }
-
     private long getExecutionTime(ITestResult iTestResult) {
         return TimeUnit.MILLISECONDS.toSeconds(iTestResult.getEndMillis() - iTestResult.getStartMillis());
     }
