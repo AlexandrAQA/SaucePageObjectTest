@@ -5,7 +5,6 @@
         <listener class-name="com.aqa.utils.annotationTransformer.AnnotationTransformer"/>
         <listener class-name="com.aqa.utils.listener.TestListener"/>
     </listeners>
-
     <test name="TestNG Sample Test">
         <classes>
             <class name="com.aqa.tests.LoginTest"/>
